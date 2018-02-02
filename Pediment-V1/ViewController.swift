@@ -52,17 +52,15 @@ class ViewController: UITableViewController, XMLParserDelegate {
             print("Data Errors Exist:")
             let error = parser.parserError!
             print("Error Description:\(error.localizedDescription)")
-            print("Error reason:\(error.localizedFailureReason)")
+            //print("Error reason:\(error.localizedFailureReason)")
             print("Line number: \(parser.lineNumber)")
         }
     
         tableView.reloadData()
     }
     
-    //TODO: do this task below
-    //FIXME: row below
-    
     //MARK: NSXMLParser delegates
+    
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]){
         print("Beginning tag: <\(elementName)>")
         if elementName == "row"{
@@ -71,10 +69,32 @@ class ViewController: UITableViewController, XMLParserDelegate {
         currentContent = ""
     }
     
+    //the middle of an element
+    //append the string for the element
+    func parser(_ parser: XMLParser, foundCharacters string: String){
+        currentContent += string
+        print("Added to make \(currentContent)")
+    }
+    
+    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?){
+        print("ending tag: </\(elementName)> with contents:\(currentContent)")
+        switch elementName{
+        case "billNumber":
+            billRow.BillName = String(currentContent)
+        case "isByRequest":
+            billRow.BillName = String(currentContent)
+        default:
+            return
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        let urlString = "https://www.gpo.gov/fdsys/bulkdata/BILLSTATUS/115/sres/BILLSTATUS-115sres99.xml"
+        beginParsing(urlString: urlString)
     }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
