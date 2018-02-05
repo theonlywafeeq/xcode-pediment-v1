@@ -12,7 +12,6 @@
 		607D629820227BAB00A68A47 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607D629620227BAB00A68A47 /* Main.storyboard */; };
 		607D629A20227BAB00A68A47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607D629920227BAB00A68A47 /* Assets.xcassets */; };
 		607D629D20227BAB00A68A47 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607D629B20227BAB00A68A47 /* LaunchScreen.storyboard */; };
-		60B375112023C5F1003F488C /* BillModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B375102023C5F1003F488C /* BillModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,7 +22,6 @@
 		607D629920227BAB00A68A47 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		607D629C20227BAB00A68A47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		607D629E20227BAB00A68A47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		60B375102023C5F1003F488C /* BillModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +57,6 @@
 				607D629220227BAB00A68A47 /* AppDelegate.swift */,
 				607D629420227BAB00A68A47 /* ViewController.swift */,
 				607D629620227BAB00A68A47 /* Main.storyboard */,
-				60B375102023C5F1003F488C /* BillModel.swift */,
 				607D629920227BAB00A68A47 /* Assets.xcassets */,
 				607D629B20227BAB00A68A47 /* LaunchScreen.storyboard */,
 				607D629E20227BAB00A68A47 /* Info.plist */,
@@ -140,7 +137,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				607D629520227BAB00A68A47 /* ViewController.swift in Sources */,
-				60B375112023C5F1003F488C /* BillModel.swift in Sources */,
 				607D629320227BAB00A68A47 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
