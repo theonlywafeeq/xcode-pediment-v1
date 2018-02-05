@@ -6,7 +6,7 @@ class CurrentTableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    if let path = NSBundle.mainBundle().URLForResource("bills", withExtension: "xml")
+    if let path = NSBundle.mainBundle().URLForResource("BILLSTATUS-114hconres70", withExtension: "xml")
       if let parser = NSXMLParser(contentsOfUrl: path) {
         parser.delegate = self
         parser.parse()
