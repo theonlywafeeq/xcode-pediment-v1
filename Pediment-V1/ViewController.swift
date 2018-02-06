@@ -8,15 +8,27 @@
 
 import UIKit
 
-class ViewController: UITableViewController, XMLParserDelegate {
+class ViewController: UIViewController, UITableViewDataSource, XMLParserDelegate {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = UITableViewCell()
+        
+        cell.textLabel?.text = "Title"
+        cell.detailTextLabel?.text = "Subtitle"
+        
+        return cell
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }
 
