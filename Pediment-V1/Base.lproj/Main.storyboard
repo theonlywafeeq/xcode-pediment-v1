@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="31B-0Q-7CE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ia8-o9-uJ5">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -67,6 +68,43 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bgm-EG-5ig" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="223.19999999999999" y="-40.029985007496258"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="gdC-cc-CSn">
+            <objects>
+                <viewController id="ia8-o9-uJ5" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="af5-TD-vBr"/>
+                        <viewControllerLayoutGuide type="bottom" id="YOR-mH-xX4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="12u-Hl-L2A">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8dA-rS-aZG">
+                                <rect key="frame" x="94" y="306" width="186" height="55"/>
+                                <color key="backgroundColor" red="1" green="0.12468229180840174" blue="0.23036435667227151" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                                <state key="normal" title="Click Here">
+                                    <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                </state>
+                                <connections>
+                                    <segue destination="31B-0Q-7CE" kind="replace" splitViewControllerTargetIndex="1" id="Xfe-6V-kwz"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="YOR-mH-xX4" firstAttribute="top" secondItem="8dA-rS-aZG" secondAttribute="bottom" constant="306" id="H0G-SL-gIl"/>
+                            <constraint firstItem="8dA-rS-aZG" firstAttribute="top" secondItem="af5-TD-vBr" secondAttribute="bottom" constant="286" id="VG6-bd-v8q"/>
+                            <constraint firstItem="8dA-rS-aZG" firstAttribute="leading" secondItem="12u-Hl-L2A" secondAttribute="leadingMargin" constant="78" id="aHQ-6s-r9a"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8dA-rS-aZG" secondAttribute="trailing" constant="79" id="cCW-hN-zoA"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jEv-OX-w4K" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-551.20000000000005" y="-40.029985007496258"/>
         </scene>
     </scenes>
 </document>
