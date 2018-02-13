@@ -25,7 +25,7 @@ class BillTableViewController: UITableViewController
     private func fetchData()
     {
         let feedParser = FeedParser()
-        feedParser.parseFeed(url: "https://developer.apple.com/news/rss/news.rss") { (rssItems) in
+        feedParser.parseFeed(url: "https://www.gpo.gov/fdsys/bulkdata/BILLSTATUS/115/s/BILLSTATUS-115s999.xml") { (rssItems) in
             self.rssItems = rssItems
             self.cellStates = Array(repeating: .collapsed, count: rssItems.count)
             

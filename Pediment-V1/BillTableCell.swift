@@ -25,9 +25,9 @@ class BillTableViewCell: UITableViewCell {
     
     var item: RSSItem! {
         didSet {
-            titleLabel.text = item.title
-            descriptionLabel.text = item.description
-            dateLabel.text = item.pubDate
+            titleLabel.text = item.fullName
+            // descriptionLabel.text = item.description
+            // dateLabel.text = item.pubDate
         }
     }
 }

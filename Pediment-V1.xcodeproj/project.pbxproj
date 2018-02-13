@@ -60,9 +60,9 @@
 			children = (
 				60619A6C202BC266003829DF /* XMLParser.swift */,
 				60619A6E2032BF9F003829DF /* BillTableCell.swift */,
+				60619A702032C0A8003829DF /* BillTableViewController.swift */,
 				607D629220227BAB00A68A47 /* AppDelegate.swift */,
 				607D629420227BAB00A68A47 /* ViewController.swift */,
-				60619A702032C0A8003829DF /* BillTableViewController.swift */,
 				607D629620227BAB00A68A47 /* Main.storyboard */,
 				607D629920227BAB00A68A47 /* Assets.xcassets */,
 				607D629E20227BAB00A68A47 /* Info.plist */,

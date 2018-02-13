@@ -9,9 +9,9 @@
 import Foundation
 
 struct RSSItem {
-    var title: String
-    var description: String
-    var pubDate: String
+    var fullName: String
+    // var description: String
+    // var pubDate: String
 }
 
 // download xml from a server
@@ -23,11 +23,13 @@ class FeedParser: NSObject, XMLParserDelegate
     private var rssItems: [RSSItem] = []
     private var currentElement = ""
     
-    private var currentTitle: String = "" {
+    private var currentfullName: String = "" {
         didSet {
-            currentTitle = currentTitle.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+            currentfullName = currentfullName.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         }
     }
+    
+    /*
     private var currentDescription: String = "" {
         didSet {
             currentDescription = currentDescription.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
@@ -38,6 +40,8 @@ class FeedParser: NSObject, XMLParserDelegate
             currentPubDate = currentPubDate.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         }
     }
+     */
+    
     private var parserCompletionHandler: (([RSSItem]) -> Void)?
     
     func parseFeed(url: String, completionHandler: (([RSSItem]) -> Void)?)
@@ -70,18 +74,18 @@ class FeedParser: NSObject, XMLParserDelegate
     {
         currentElement = elementName
         if currentElement == "item" {
-            currentTitle = ""
-            currentDescription = ""
-            currentPubDate = ""
+            currentfullName = ""
+            // currentDescription = ""
+            // currentPubDate = ""
         }
     }
     
     func parser(_ parser: XMLParser, foundCharacters string: String)
     {
         switch currentElement {
-        case "title": currentTitle += string
-        case "description" : currentDescription += string
-        case "pubDate" : currentPubDate += string
+        case "fullName": currentfullName += string
+        // case "description" : currentDescription += string
+        // case "pubDate" : currentPubDate += string
         default: break
         }
     }
@@ -89,7 +93,7 @@ class FeedParser: NSObject, XMLParserDelegate
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?)
     {
         if elementName == "item" {
-            let rssItem = RSSItem(title: currentTitle, description: currentDescription, pubDate: currentPubDate)
+            let rssItem = RSSItem(fullName: currentfullName)
             self.rssItems.append(rssItem)
         }
     }
