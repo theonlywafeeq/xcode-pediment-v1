@@ -53,94 +53,13 @@
                     </tabBar>
                     <connections>
                         <segue destination="AZi-JW-Awm" kind="relationship" relationship="viewControllers" id="mQ4-ws-foP"/>
-                        <segue destination="2nc-wm-dKk" kind="relationship" relationship="viewControllers" id="pF1-f5-rkz"/>
                         <segue destination="dta-2b-VqC" kind="relationship" relationship="viewControllers" id="aPw-Bo-U9Z"/>
+                        <segue destination="Jh8-g9-lIr" kind="relationship" relationship="viewControllers" id="Bby-BO-QCe"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ndE-qL-5dX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-635" y="-312"/>
-        </scene>
-        <!--Current-->
-        <scene sceneID="SN6-eg-wiA">
-            <objects>
-                <tableViewController title="Current" id="2nc-wm-dKk" customClass="BillTableViewController" customModule="Pediment_V1" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="gsO-pc-gfY">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="87" id="BpU-lp-NEg" customClass="BillTableViewCell" customModule="Pediment_V1" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="87"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BpU-lp-NEg" id="T5D-7m-let">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="86.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="NON-Ps-gIe">
-                                            <rect key="frame" x="16" y="0.0" width="343" height="87"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MvY-6d-lt9" customClass="titleLabel">
-                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="53"/>
-                                                    <attributedString key="attributedText">
-                                                        <fragment content="Title">
-                                                            <attributes>
-                                                                <font key="NSFont" size="26" name="SFProDisplay-Heavy"/>
-                                                                <font key="NSOriginalFont" size="26" name="SFProDisplay-Heavy"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9lN-Km-ksg">
-                                                    <rect key="frame" x="0.0" y="53" width="343" height="14"/>
-                                                    <attributedString key="attributedText">
-                                                        <fragment content="PubDate">
-                                                            <attributes>
-                                                                <font key="NSFont" size="12" name="SFProDisplay-Regular"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3iI-VC-iMZ">
-                                                    <rect key="frame" x="0.0" y="67" width="343" height="20"/>
-                                                    <attributedString key="attributedText">
-                                                        <fragment content="Description">
-                                                            <attributes>
-                                                                <font key="NSFont" size="17" name="SFProDisplay-Regular"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </stackView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="NON-Ps-gIe" firstAttribute="top" secondItem="T5D-7m-let" secondAttribute="top" id="eDw-gK-dLG"/>
-                                        <constraint firstItem="NON-Ps-gIe" firstAttribute="leading" secondItem="T5D-7m-let" secondAttribute="leading" constant="16" id="pbb-yY-O7K"/>
-                                        <constraint firstAttribute="bottom" secondItem="NON-Ps-gIe" secondAttribute="bottom" constant="-0.5" id="sDj-Yw-TTy"/>
-                                        <constraint firstAttribute="trailing" secondItem="NON-Ps-gIe" secondAttribute="trailing" constant="16" id="zqw-Q8-dmV"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="dateLabel" destination="9lN-Km-ksg" id="y94-IH-IBw"/>
-                                    <outlet property="descriptionLabel" destination="3iI-VC-iMZ" id="Vbd-J8-hRA"/>
-                                    <outlet property="titleLabel" destination="MvY-6d-lt9" id="N0w-RZ-ESI"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="2nc-wm-dKk" id="diW-s6-tFv"/>
-                            <outlet property="delegate" destination="2nc-wm-dKk" id="cs5-Ea-n68"/>
-                        </connections>
-                    </tableView>
-                    <tabBarItem key="tabBarItem" title="Current" id="gVE-iF-LBf"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="f4h-Mw-jcV" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-636" y="527.58620689655174"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="LQ6-wN-rvn">
@@ -169,6 +88,55 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cum-um-yhP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="132" y="528"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="CBz-Af-2qE">
+            <objects>
+                <tableViewController id="Jh8-g9-lIr" customClass="BillTableViewController" customModule="Pediment_V1" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Kpc-tK-Llc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="101" id="lTa-ua-aYj" customClass="BillTableViewCell" customModule="Pediment_V1" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="101"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lTa-ua-aYj" id="Ic6-4t-3D4">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="100.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mya-Lh-IMF">
+                                            <rect key="frame" x="16" y="25" width="343" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sponsor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1PD-42-vUr">
+                                            <rect key="frame" x="16" y="54" width="343" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="sponsorLabel" destination="1PD-42-vUr" id="AaF-da-dE0"/>
+                                    <outlet property="titleLabel" destination="Mya-Lh-IMF" id="vNw-9R-HdU"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Jh8-g9-lIr" id="6NB-lD-Ute"/>
+                            <outlet property="delegate" destination="Jh8-g9-lIr" id="FGA-8Y-NnE"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Item" id="FX9-2s-UYo"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ywh-a2-Wln" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-636" y="527.58620689655174"/>
         </scene>
     </scenes>
 </document>

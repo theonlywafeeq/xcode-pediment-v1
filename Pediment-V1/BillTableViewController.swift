@@ -61,7 +61,7 @@ class BillTableViewController: UITableViewController
             cell.selectionStyle = .none
             
             if let cellStates = cellStates {
-                cell.descriptionLabel.numberOfLines = (cellStates[indexPath.row] == .expanded) ? 0 : 4
+                cell.sponsorLabel.numberOfLines = (cellStates[indexPath.row] == .expanded) ? 0 : 4
             }
         }
         
@@ -73,11 +73,7 @@ class BillTableViewController: UITableViewController
         tableView.deselectRow(at: indexPath, animated: true)
         let cell = tableView.cellForRow(at: indexPath) as! BillTableViewCell
         
-        tableView.beginUpdates()
-        cell.descriptionLabel.numberOfLines = (cell.descriptionLabel.numberOfLines == 0) ? 3 : 0
-        
-        cellStates?[indexPath.row] = (cell.descriptionLabel.numberOfLines == 0) ? .expanded : .collapsed
-        
+        tableView.beginUpdates()        
         tableView.endUpdates()
     }
     

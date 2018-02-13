@@ -16,18 +16,12 @@ enum CellState {
 class BillTableViewCell: UITableViewCell {
     
     @IBOutlet weak var titleLabel:UILabel!
-    @IBOutlet weak var descriptionLabel:UILabel! {
-        didSet {
-            descriptionLabel.numberOfLines = 3
-        }
-    }
-    @IBOutlet weak var dateLabel:UILabel!
+    @IBOutlet weak var sponsorLabel:UILabel!
     
     var item: RSSItem! {
         didSet {
-            titleLabel.text = item.fullName
-            // descriptionLabel.text = item.description
-            // dateLabel.text = item.pubDate
+            titleLabel.text = item.title
+            sponsorLabel.text = item.fullName
         }
     }
 }

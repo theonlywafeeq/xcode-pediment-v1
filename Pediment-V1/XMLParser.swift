@@ -8,9 +8,12 @@
 
 import Foundation
 
+var SETfullName: Bool = false
+var SETtitle: Bool = false
+
 struct RSSItem {
     var fullName: String
-    // var description: String
+    var title: String
     // var pubDate: String
 }
 
@@ -23,24 +26,17 @@ class FeedParser: NSObject, XMLParserDelegate
     private var rssItems: [RSSItem] = []
     private var currentElement = ""
     
+    private var currentTitle: String = "" {
+        didSet {
+            currentTitle = currentTitle.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        }
+    }
+    
     private var currentfullName: String = "" {
         didSet {
             currentfullName = currentfullName.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         }
     }
-    
-    /*
-    private var currentDescription: String = "" {
-        didSet {
-            currentDescription = currentDescription.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-        }
-    }
-    private var currentPubDate: String = "" {
-        didSet {
-            currentPubDate = currentPubDate.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-        }
-    }
-     */
     
     private var parserCompletionHandler: (([RSSItem]) -> Void)?
     
@@ -74,18 +70,24 @@ class FeedParser: NSObject, XMLParserDelegate
     {
         currentElement = elementName
         if currentElement == "item" {
+            currentTitle = ""
             currentfullName = ""
-            // currentDescription = ""
-            // currentPubDate = ""
         }
     }
     
     func parser(_ parser: XMLParser, foundCharacters string: String)
     {
         switch currentElement {
-        case "fullName": currentfullName += string
-        // case "description" : currentDescription += string
-        // case "pubDate" : currentPubDate += string
+        case "fullName":
+            if SETfullName == false {
+                currentfullName += string
+                SETfullName = true
+            }
+        case "title":
+            if SETtitle == false {
+                currentTitle += string
+                SETtitle = true
+            }
         default: break
         }
     }
@@ -93,7 +95,7 @@ class FeedParser: NSObject, XMLParserDelegate
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?)
     {
         if elementName == "item" {
-            let rssItem = RSSItem(fullName: currentfullName)
+            let rssItem = RSSItem(fullName: currentfullName, title: currentTitle)
             self.rssItems.append(rssItem)
         }
     }
