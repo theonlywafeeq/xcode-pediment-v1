@@ -42,10 +42,77 @@
             </objects>
             <point key="canvasLocation" x="-1431.2" y="527.58620689655174"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Current-->
+        <scene sceneID="p7G-aS-7ZR">
+            <objects>
+                <viewController id="ENF-Yp-K1d" customClass="BillTableViewController" customModule="Pediment_V1" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MYc-1O-9Kx"/>
+                        <viewControllerLayoutGuide type="bottom" id="2tZ-6r-1rt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jvi-7d-3J9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Current" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XBh-W7-nP1">
+                                <rect key="frame" x="16" y="20" width="343" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="h3K-wt-8yA">
+                                <rect key="frame" x="0.0" y="65" width="375" height="553"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="104" id="d0o-lo-qOJ" customClass="BillTableViewCell" customModule="Pediment_V1" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="104"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="d0o-lo-qOJ" id="NOc-aT-gwI">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="103.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bV3-p3-fuP">
+                                                    <rect key="frame" x="44" y="23" width="42" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AtM-gx-n8D">
+                                                    <rect key="frame" x="230" y="53" width="42" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="sponsorLabel" destination="AtM-gx-n8D" id="Tjj-xA-CrG"/>
+                                            <outlet property="titleLabel" destination="bV3-p3-fuP" id="Jjr-Gd-4wB"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="ENF-Yp-K1d" id="FCP-8M-cMR"/>
+                                    <outlet property="delegate" destination="ENF-Yp-K1d" id="wHJ-vQ-cNk"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Current" id="kW6-Bw-pf8"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t1t-U9-2OK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-636" y="527.58620689655174"/>
+        </scene>
+        <!--Current-->
         <scene sceneID="08W-5r-fwH">
             <objects>
-                <tabBarController id="VhG-4h-C8c" sceneMemberID="viewController">
+                <tabBarController title="Current" id="VhG-4h-C8c" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zTf-Uk-GzW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -53,8 +120,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="AZi-JW-Awm" kind="relationship" relationship="viewControllers" id="mQ4-ws-foP"/>
+                        <segue destination="ENF-Yp-K1d" kind="relationship" relationship="viewControllers" id="WDQ-UG-7JA"/>
                         <segue destination="dta-2b-VqC" kind="relationship" relationship="viewControllers" id="aPw-Bo-U9Z"/>
-                        <segue destination="Jh8-g9-lIr" kind="relationship" relationship="viewControllers" id="Bby-BO-QCe"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ndE-qL-5dX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -88,55 +155,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cum-um-yhP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="132" y="528"/>
-        </scene>
-        <!--Item-->
-        <scene sceneID="CBz-Af-2qE">
-            <objects>
-                <tableViewController id="Jh8-g9-lIr" customClass="BillTableViewController" customModule="Pediment_V1" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Kpc-tK-Llc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="101" id="lTa-ua-aYj" customClass="BillTableViewCell" customModule="Pediment_V1" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="101"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lTa-ua-aYj" id="Ic6-4t-3D4">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="100.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mya-Lh-IMF">
-                                            <rect key="frame" x="16" y="25" width="343" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sponsor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1PD-42-vUr">
-                                            <rect key="frame" x="16" y="54" width="343" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="sponsorLabel" destination="1PD-42-vUr" id="AaF-da-dE0"/>
-                                    <outlet property="titleLabel" destination="Mya-Lh-IMF" id="vNw-9R-HdU"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="Jh8-g9-lIr" id="6NB-lD-Ute"/>
-                            <outlet property="delegate" destination="Jh8-g9-lIr" id="FGA-8Y-NnE"/>
-                        </connections>
-                    </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="FX9-2s-UYo"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ywh-a2-Wln" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-636" y="527.58620689655174"/>
         </scene>
     </scenes>
 </document>

@@ -8,11 +8,6 @@
 
 import UIKit
 
-enum CellState {
-    case expanded
-    case collapsed
-}
-
 class BillTableViewCell: UITableViewCell {
     
     @IBOutlet weak var titleLabel:UILabel!
