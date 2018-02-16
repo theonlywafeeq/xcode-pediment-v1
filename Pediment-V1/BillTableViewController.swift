@@ -8,16 +8,15 @@
 
 import UIKit
 
-class BillTableViewController: UIViewController, UITableViewDataSource
+class BillTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate
 {
+    @IBOutlet var tableView: UITableView!
+    
     private var rssItems: [RSSItem]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //tableView.estimatedRowHeight = 155.0
-        //tableView.rowHeight = UITableViewAutomaticDimension
-        
+
         fetchData()
     }
     
@@ -50,7 +49,6 @@ class BillTableViewController: UIViewController, UITableViewDataSource
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! BillTableViewCell
         if let item = rssItems?[indexPath.item] {
             cell.item = item
-            cell.selectionStyle = .none
         }
         
         return cell
@@ -59,7 +57,9 @@ class BillTableViewController: UIViewController, UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         tableView.deselectRow(at: indexPath, animated: true)
-        tableView.beginUpdates()        
+        
+        tableView.beginUpdates()
+        
         tableView.endUpdates()
     }
     

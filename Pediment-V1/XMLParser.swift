@@ -14,12 +14,7 @@ var SETtitle: Bool = false
 struct RSSItem {
     var fullName: String
     var title: String
-    // var pubDate: String
 }
-
-// download xml from a server
-// parse xml to foundation objects
-// call back
 
 class FeedParser: NSObject, XMLParserDelegate
 {
@@ -55,7 +50,6 @@ class FeedParser: NSObject, XMLParserDelegate
                 return
             }
             
-            /// parse our xml data
             let parser = XMLParser(data: data)
             parser.delegate = self
             parser.parse()
@@ -77,18 +71,21 @@ class FeedParser: NSObject, XMLParserDelegate
     
     func parser(_ parser: XMLParser, foundCharacters string: String)
     {
-        switch currentElement {
-        case "fullName":
-            if SETfullName == false {
-                currentfullName += string
-                SETfullName = true
-            }
-        case "title":
-            if SETtitle == false {
-                currentTitle += string
-                SETtitle = true
-            }
-        default: break
+        print("----------NEW LINE----------")
+        print(currentElement)
+        
+        if currentElement == "title" && SETtitle == false {
+            currentTitle += string
+            SETtitle = true
+            print("YOU GOT IT")
+            print(currentElement)
+        }
+        
+        if currentElement == "fullName" && SETfullName == false {
+            currentfullName += string
+            SETfullName = true
+            print("YOU GOT IT")
+            print(currentElement)
         }
     }
     

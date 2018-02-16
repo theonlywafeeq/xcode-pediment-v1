@@ -66,44 +66,61 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="104" id="d0o-lo-qOJ" customClass="BillTableViewCell" customModule="Pediment_V1" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="104"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="500" reuseIdentifier="Cell" rowHeight="90" id="d0o-lo-qOJ" customClass="BillTableViewCell" customModule="Pediment_V1" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="d0o-lo-qOJ" id="NOc-aT-gwI">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="103.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bV3-p3-fuP">
-                                                    <rect key="frame" x="44" y="23" width="42" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bV3-p3-fuP">
+                                                    <rect key="frame" x="96" y="11" width="339" height="29"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="Label">
+                                                            <attributes>
+                                                                <font key="NSFont" size="24" name="HelveticaNeue-Bold"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AtM-gx-n8D">
-                                                    <rect key="frame" x="230" y="53" width="42" height="21"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="si1-uZ-Lh6">
+                                                    <rect key="frame" x="15" y="11" width="64" height="68"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AtM-gx-n8D">
+                                                    <rect key="frame" x="96" y="47" width="339" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="Label">
+                                                            <attributes>
+                                                                <font key="NSFont" metaFont="system" size="17"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="sponsorLabel" destination="AtM-gx-n8D" id="Tjj-xA-CrG"/>
+                                            <outlet property="sponsorLabel" destination="AtM-gx-n8D" id="iKu-9R-tRA"/>
                                             <outlet property="titleLabel" destination="bV3-p3-fuP" id="Jjr-Gd-4wB"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="ENF-Yp-K1d" id="FCP-8M-cMR"/>
-                                    <outlet property="delegate" destination="ENF-Yp-K1d" id="wHJ-vQ-cNk"/>
+                                    <outlet property="dataSource" destination="ENF-Yp-K1d" id="Rqt-vI-C0r"/>
+                                    <outlet property="delegate" destination="ENF-Yp-K1d" id="Lqx-7O-fCb"/>
                                 </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Current" id="kW6-Bw-pf8"/>
+                    <connections>
+                        <outlet property="tableView" destination="h3K-wt-8yA" id="ITz-cN-1Lu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t1t-U9-2OK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -119,8 +136,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="AZi-JW-Awm" kind="relationship" relationship="viewControllers" id="mQ4-ws-foP"/>
                         <segue destination="ENF-Yp-K1d" kind="relationship" relationship="viewControllers" id="WDQ-UG-7JA"/>
+                        <segue destination="AZi-JW-Awm" kind="relationship" relationship="viewControllers" id="mQ4-ws-foP"/>
                         <segue destination="dta-2b-VqC" kind="relationship" relationship="viewControllers" id="aPw-Bo-U9Z"/>
                     </connections>
                 </tabBarController>
@@ -157,4 +174,7 @@
             <point key="canvasLocation" x="132" y="528"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="defaultPhoto" width="16" height="16"/>
+    </resources>
 </document>

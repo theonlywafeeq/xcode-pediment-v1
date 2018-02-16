@@ -15,8 +15,8 @@ class BillTableViewCell: UITableViewCell {
     
     var item: RSSItem! {
         didSet {
-            titleLabel.text = item.title
-            sponsorLabel.text = item.fullName
+            titleLabel!.text = item.title
+            sponsorLabel!.text = item.fullName
         }
     }
 }
