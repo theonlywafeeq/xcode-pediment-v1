@@ -14,6 +14,7 @@
 		607D629520227BAB00A68A47 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607D629420227BAB00A68A47 /* ViewController.swift */; };
 		607D629820227BAB00A68A47 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607D629620227BAB00A68A47 /* Main.storyboard */; };
 		607D629A20227BAB00A68A47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607D629920227BAB00A68A47 /* Assets.xcassets */; };
+		60D923132038D3FF00909A3D /* Kamala_Harris_official_photo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 60D923122038D3FF00909A3D /* Kamala_Harris_official_photo.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		607D629720227BAB00A68A47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		607D629920227BAB00A68A47 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		607D629E20227BAB00A68A47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		60D923122038D3FF00909A3D /* Kamala_Harris_official_photo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Kamala_Harris_official_photo.jpg; path = ../../../../Pictures/Kamala_Harris_official_photo.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				607D629220227BAB00A68A47 /* AppDelegate.swift */,
 				607D629420227BAB00A68A47 /* ViewController.swift */,
 				607D629620227BAB00A68A47 /* Main.storyboard */,
+				60D923122038D3FF00909A3D /* Kamala_Harris_official_photo.jpg */,
 				607D629920227BAB00A68A47 /* Assets.xcassets */,
 				607D629E20227BAB00A68A47 /* Info.plist */,
 			);
@@ -132,6 +135,7 @@
 			files = (
 				607D629A20227BAB00A68A47 /* Assets.xcassets in Resources */,
 				607D629820227BAB00A68A47 /* Main.storyboard in Resources */,
+				60D923132038D3FF00909A3D /* Kamala_Harris_official_photo.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

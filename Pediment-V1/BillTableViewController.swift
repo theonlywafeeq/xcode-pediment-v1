@@ -12,24 +12,23 @@ class BillTableViewController: UIViewController, UITableViewDataSource, UITableV
 {
     @IBOutlet var tableView: UITableView!
     
-    private var rssItems: [RSSItem]?
+    private var billItems: [BillItem] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         fetchData()
     }
     
     private func fetchData()
     {
         let feedParser = FeedParser()
-        feedParser.parseFeed(url: "https://www.gpo.gov/fdsys/bulkdata/BILLSTATUS/115/s/BILLSTATUS-115s999.xml") { (rssItems) in
-            self.rssItems = rssItems
-            
-            OperationQueue.main.addOperation {
-                self.tableView.reloadSections(IndexSet(integer: 0), with: .left)
-            }
+        feedParser.parseFeed(url: "https://www.gpo.gov/fdsys/bulkdata/BILLSTATUS/115/s/BILLSTATUS-115s999.xml") {
+            (billItems) in self.billItems = billItems
         }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 135
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -37,30 +36,16 @@ class BillTableViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let rssItems = rssItems else {
-            return 0
-        }
-        
-        return rssItems.count
+        return billItems.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! BillTableViewCell
-        if let item = rssItems?[indexPath.item] {
-            cell.item = item
-        }
+        
+        cell.titleLabel.text = billItems[indexPath.row].title
+        cell.sponsorLabel.text = billItems[indexPath.row].fullName
         
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
-    {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
-        tableView.beginUpdates()
-        
-        tableView.endUpdates()
-    }
-    
 }

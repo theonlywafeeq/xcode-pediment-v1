@@ -13,10 +13,4 @@ class BillTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel:UILabel!
     @IBOutlet weak var sponsorLabel:UILabel!
     
-    var item: RSSItem! {
-        didSet {
-            titleLabel!.text = item.title
-            sponsorLabel!.text = item.fullName
-        }
-    }
 }

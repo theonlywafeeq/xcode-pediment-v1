@@ -8,34 +8,25 @@
 
 import Foundation
 
-var SETfullName: Bool = false
-var SETtitle: Bool = false
-
-struct RSSItem {
+struct BillItem {
     var fullName: String
     var title: String
 }
 
 class FeedParser: NSObject, XMLParserDelegate
 {
-    private var rssItems: [RSSItem] = []
+    private var billItems: [BillItem] = []
+    
     private var currentElement = ""
+    private var currentTitle: String = ""
+    private var currentfullName: String = ""
     
-    private var currentTitle: String = "" {
-        didSet {
-            currentTitle = currentTitle.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-        }
-    }
+    private var SETfullName: Bool = false
+    private var SETtitle: Bool = false
     
-    private var currentfullName: String = "" {
-        didSet {
-            currentfullName = currentfullName.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-        }
-    }
+    private var parserCompletionHandler: (([BillItem]) -> Void)?
     
-    private var parserCompletionHandler: (([RSSItem]) -> Void)?
-    
-    func parseFeed(url: String, completionHandler: (([RSSItem]) -> Void)?)
+    func parseFeed(url: String, completionHandler: (([BillItem]) -> Void)?)
     {
         self.parserCompletionHandler = completionHandler
         
@@ -46,7 +37,6 @@ class FeedParser: NSObject, XMLParserDelegate
                 if let error = error {
                     print(error.localizedDescription)
                 }
-                
                 return
             }
             
@@ -58,47 +48,32 @@ class FeedParser: NSObject, XMLParserDelegate
         task.resume()
     }
     
-    // MARK: - XML Parser Delegate
-    
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:])
     {
         currentElement = elementName
-        if currentElement == "item" {
-            currentTitle = ""
-            currentfullName = ""
-        }
     }
     
     func parser(_ parser: XMLParser, foundCharacters string: String)
     {
-        print("----------NEW LINE----------")
-        print(currentElement)
-        
         if currentElement == "title" && SETtitle == false {
             currentTitle += string
             SETtitle = true
-            print("YOU GOT IT")
-            print(currentElement)
         }
         
         if currentElement == "fullName" && SETfullName == false {
             currentfullName += string
             SETfullName = true
-            print("YOU GOT IT")
-            print(currentElement)
         }
     }
     
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?)
     {
-        if elementName == "item" {
-            let rssItem = RSSItem(fullName: currentfullName, title: currentTitle)
-            self.rssItems.append(rssItem)
-        }
+        let billItems = BillItem(fullName: currentfullName, title: currentTitle)
+        self.billItems.append(billItems)
     }
     
     func parserDidEndDocument(_ parser: XMLParser) {
-        parserCompletionHandler?(rssItems)
+        parserCompletionHandler?(billItems)
     }
     
     func parser(_ parser: XMLParser, parseErrorOccurred parseError: Error)
