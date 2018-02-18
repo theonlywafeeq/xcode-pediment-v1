@@ -8,28 +8,19 @@
 
 import Foundation
 
-struct BillItem {
-    var fullName: String
-    var title: String
-}
-
 class FeedParser: NSObject, XMLParserDelegate
 {
-    private var billItems: [BillItem] = []
+    var billItems: [BillModel] = []
     
     private var currentElement = ""
-    private var currentTitle: String = ""
+    private var currenttitle: String = ""
     private var currentfullName: String = ""
     
     private var SETfullName: Bool = false
     private var SETtitle: Bool = false
     
-    private var parserCompletionHandler: (([BillItem]) -> Void)?
-    
-    func parseFeed(url: String, completionHandler: (([BillItem]) -> Void)?)
+    func parseFeed(url: String)
     {
-        self.parserCompletionHandler = completionHandler
-        
         let request = URLRequest(url: URL(string: url)!)
         let urlSession = URLSession.shared
         let task = urlSession.dataTask(with: request) { (data, response, error) in
@@ -56,7 +47,7 @@ class FeedParser: NSObject, XMLParserDelegate
     func parser(_ parser: XMLParser, foundCharacters string: String)
     {
         if currentElement == "title" && SETtitle == false {
-            currentTitle += string
+            currenttitle += string
             SETtitle = true
         }
         
@@ -68,16 +59,20 @@ class FeedParser: NSObject, XMLParserDelegate
     
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?)
     {
-        let billItems = BillItem(fullName: currentfullName, title: currentTitle)
-        self.billItems.append(billItems)
-    }
-    
-    func parserDidEndDocument(_ parser: XMLParser) {
-        parserCompletionHandler?(billItems)
+        let newBillModel = BillModel()
+        newBillModel.title = currenttitle
+        newBillModel.fullName = currentfullName
+        billItems.append(newBillModel)
     }
     
     func parser(_ parser: XMLParser, parseErrorOccurred parseError: Error)
     {
         print(parseError.localizedDescription)
     }
+}
+
+class BillModel
+{
+    var title: String = ""
+    var fullName: String = ""
 }

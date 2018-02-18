@@ -12,7 +12,7 @@ class BillTableViewController: UIViewController, UITableViewDataSource, UITableV
 {
     @IBOutlet var tableView: UITableView!
     
-    private var billItems: [BillItem] = []
+    let feedParser = FeedParser()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,10 +21,7 @@ class BillTableViewController: UIViewController, UITableViewDataSource, UITableV
     
     private func fetchData()
     {
-        let feedParser = FeedParser()
-        feedParser.parseFeed(url: "https://www.gpo.gov/fdsys/bulkdata/BILLSTATUS/115/s/BILLSTATUS-115s999.xml") {
-            (billItems) in self.billItems = billItems
-        }
+        feedParser.parseFeed(url: "https://www.gpo.gov/fdsys/bulkdata/BILLSTATUS/115/s/BILLSTATUS-115s999.xml")
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -36,15 +33,17 @@ class BillTableViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return billItems.count
+        print("----------I WANT TO SEE----------")
+        print(feedParser.billItems.count)
+        return feedParser.billItems.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! BillTableViewCell
         
-        cell.titleLabel.text = billItems[indexPath.row].title
-        cell.sponsorLabel.text = billItems[indexPath.row].fullName
+        cell.titleLabel.text = feedParser.billItems[indexPath.row].title
+        cell.sponsorLabel.text = feedParser.billItems[indexPath.row].fullName
         
         return cell
     }
