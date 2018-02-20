@@ -12,8 +12,8 @@ class BillTableViewController: UIViewController, UITableViewDataSource, UITableV
 {
     @IBOutlet var tableView: UITableView!
     
-    let feedParser = FeedParser()
-    let rssBillParser = RSSBillParser()
+    let hr115XMLParser = HR115XMLParser()
+    let billXMLParser = BillXMLParser()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,16 +22,22 @@ class BillTableViewController: UIViewController, UITableViewDataSource, UITableV
     
     private func fetchData()
     {
-        rssBillParser.parseFeed(url: "https://www.gpo.gov/smap/bulkdata/BILLSTATUS/115hr/sitemap.xml")
+        hr115XMLParser.parseFeed(url: "https://www.gpo.gov/smap/bulkdata/BILLSTATUS/115hr/sitemap.xml")
         
-        for i in 0..<rssBillParser.billCount {
-            feedParser.parseFeed(url: rssBillParser.billURL[i])
+        print("it is taking a while")
+        
+        sleep(15)
+        
+        print("-------------------")
+        
+        for i in 0..<hr115XMLParser.billItems.count {
+            print("NEW ITEM")
+            sleep(1)
+            print(hr115XMLParser.billItems[i])
+            sleep(1)
         }
         
-        print(rssBillParser.billCount)
-        print(rssBillParser.billURL)
-        
-        /*feedParser.parseFeed(url: "https://www.gpo.gov/fdsys/bulkdata/BILLSTATUS/115/s/BILLSTATUS-115s999.xml")*/
+        print(billXMLParser.billItems.count)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -43,19 +49,15 @@ class BillTableViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("----------I WANT TO SEE----------")
-        print(feedParser.billItems.count)
-        return feedParser.billItems.count
+        return hr115XMLParser.billItems.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! BillTableViewCell
         
-        feedParser.parseFeed(url: rssBillParser.billURL[indexPath.row])
-        
-        cell.titleLabel.text = feedParser.billItems[indexPath.row].title
-        cell.sponsorLabel.text = feedParser.billItems[indexPath.row].fullName
+        //cell.titleLabel.text = billXMLParser.billItems[indexPath.row].billtitle
+        //cell.sponsorLabel.text = billXMLParser.billItems[indexPath.row].billfullName
         
         return cell
     }

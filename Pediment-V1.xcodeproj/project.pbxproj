@@ -7,18 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		60619A6D202BC266003829DF /* XMLBillParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60619A6C202BC266003829DF /* XMLBillParser.swift */; };
 		60619A6F2032BF9F003829DF /* BillTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60619A6E2032BF9F003829DF /* BillTableViewCell.swift */; };
 		60619A712032C0A8003829DF /* BillTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60619A702032C0A8003829DF /* BillTableViewController.swift */; };
 		607D629320227BAB00A68A47 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607D629220227BAB00A68A47 /* AppDelegate.swift */; };
 		607D629520227BAB00A68A47 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607D629420227BAB00A68A47 /* ViewController.swift */; };
 		607D629820227BAB00A68A47 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607D629620227BAB00A68A47 /* Main.storyboard */; };
 		607D629A20227BAB00A68A47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607D629920227BAB00A68A47 /* Assets.xcassets */; };
-		60D923132038D3FF00909A3D /* Kamala_Harris_official_photo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 60D923122038D3FF00909A3D /* Kamala_Harris_official_photo.jpg */; };
+		60E802BD203CBC1F003CBF28 /* XMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E802BC203CBC1F003CBF28 /* XMLParser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		60619A6C202BC266003829DF /* XMLBillParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLBillParser.swift; sourceTree = "<group>"; };
 		60619A6E2032BF9F003829DF /* BillTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillTableViewCell.swift; sourceTree = "<group>"; };
 		60619A702032C0A8003829DF /* BillTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillTableViewController.swift; sourceTree = "<group>"; };
 		607D628F20227BAB00A68A47 /* Pediment-V1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pediment-V1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -27,7 +25,7 @@
 		607D629720227BAB00A68A47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		607D629920227BAB00A68A47 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		607D629E20227BAB00A68A47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		60D923122038D3FF00909A3D /* Kamala_Harris_official_photo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Kamala_Harris_official_photo.jpg; path = ../../../../Pictures/Kamala_Harris_official_photo.jpg; sourceTree = "<group>"; };
+		60E802BC203CBC1F003CBF28 /* XMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,13 +58,12 @@
 		607D629120227BAB00A68A47 /* Pediment-V1 */ = {
 			isa = PBXGroup;
 			children = (
-				60619A6C202BC266003829DF /* XMLBillParser.swift */,
+				60E802BC203CBC1F003CBF28 /* XMLParser.swift */,
 				60619A6E2032BF9F003829DF /* BillTableViewCell.swift */,
 				60619A702032C0A8003829DF /* BillTableViewController.swift */,
 				607D629220227BAB00A68A47 /* AppDelegate.swift */,
 				607D629420227BAB00A68A47 /* ViewController.swift */,
 				607D629620227BAB00A68A47 /* Main.storyboard */,
-				60D923122038D3FF00909A3D /* Kamala_Harris_official_photo.jpg */,
 				607D629920227BAB00A68A47 /* Assets.xcassets */,
 				607D629E20227BAB00A68A47 /* Info.plist */,
 			);
@@ -135,7 +132,6 @@
 			files = (
 				607D629A20227BAB00A68A47 /* Assets.xcassets in Resources */,
 				607D629820227BAB00A68A47 /* Main.storyboard in Resources */,
-				60D923132038D3FF00909A3D /* Kamala_Harris_official_photo.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,9 +144,9 @@
 			files = (
 				607D629520227BAB00A68A47 /* ViewController.swift in Sources */,
 				60619A6F2032BF9F003829DF /* BillTableViewCell.swift in Sources */,
+				60E802BD203CBC1F003CBF28 /* XMLParser.swift in Sources */,
 				607D629320227BAB00A68A47 /* AppDelegate.swift in Sources */,
 				60619A712032C0A8003829DF /* BillTableViewController.swift in Sources */,
-				60619A6D202BC266003829DF /* XMLBillParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

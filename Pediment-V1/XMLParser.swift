@@ -2,25 +2,37 @@
 //  XMLParser.swift
 //  Pediment-V1
 //
-//  Created by Wafeeq on 2/7/18.
+//  Created by wafeeq on 2/20/18.
 //  Copyright © 2018 The Only Wafeeq. All rights reserved.
 //
 
 import Foundation
 
-class FeedParser: NSObject, XMLParserDelegate
+class BillModel {
+    var billURL: String = ""
+    var billfullName: String = ""
+    var billtitle: String = ""
+}
+
+class BillXMLParser: NSObject, XMLParserDelegate
 {
     var billItems: [BillModel] = []
     
     private var currentElement = ""
+    
+    private var currenturl: String = ""
     private var currenttitle: String = ""
     private var currentfullName: String = ""
     
-    private var SETfullName: Bool = false
-    private var SETtitle: Bool = false
+    private var SETcurrenttitle: Bool = false
+    private var SETcurrentfullName: Bool = false
+    
+    private var tagSwitch: Bool = false
     
     func parseFeed(url: String)
     {
+        currenturl = url
+        
         let request = URLRequest(url: URL(string: url)!)
         let urlSession = URLSession.shared
         let task = urlSession.dataTask(with: request) { (data, response, error) in
@@ -28,6 +40,7 @@ class FeedParser: NSObject, XMLParserDelegate
                 if let error = error {
                     print(error.localizedDescription)
                 }
+                
                 return
             }
             
@@ -46,23 +59,23 @@ class FeedParser: NSObject, XMLParserDelegate
     
     func parser(_ parser: XMLParser, foundCharacters string: String)
     {
-        if currentElement == "title" && SETtitle == false {
+        if currentElement == "title" && SETcurrenttitle {
             currenttitle += string
-            SETtitle = true
         }
         
-        if currentElement == "fullName" && SETfullName == false {
+        if currentElement == "fullName" && SETcurrentfullName {
             currentfullName += string
-            SETfullName = true
         }
     }
     
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?)
     {
-        let newBillModel = BillModel()
-        newBillModel.title = currenttitle
-        newBillModel.fullName = currentfullName
-        billItems.append(newBillModel)
+        let newBillItems = BillModel()
+        newBillItems.billURL = currenturl
+        newBillItems.billtitle = currenttitle
+        newBillItems.billfullName = currentfullName
+        
+        billItems.append(newBillItems)
     }
     
     func parser(_ parser: XMLParser, parseErrorOccurred parseError: Error)
@@ -71,14 +84,14 @@ class FeedParser: NSObject, XMLParserDelegate
     }
 }
 
-class RSSBillParser: NSObject, XMLParserDelegate
+
+class HR115XMLParser: NSObject, XMLParserDelegate
 {
-    var billURL: [String] = []
-    
-    var billCount: Int = 0
+    var billItems: [String] = []
     
     private var currentElement = ""
-    private var currentURL = ""
+    
+    private var currentURL: String = ""
     
     func parseFeed(url: String)
     {
@@ -89,6 +102,7 @@ class RSSBillParser: NSObject, XMLParserDelegate
                 if let error = error {
                     print(error.localizedDescription)
                 }
+                
                 return
             }
             
@@ -107,25 +121,23 @@ class RSSBillParser: NSObject, XMLParserDelegate
     
     func parser(_ parser: XMLParser, foundCharacters string: String)
     {
-        if currentElement == "loc" {
-            currentURL += string
-            billCount += 1
+        if (currentElement == "loc" && tagSwitch == false) {
+            currentURL = string
+            print(billItems.count)
+            billItems.append(currentURL)
+            print(billItems)
+        }
+        else {
+            tagSwitch = true
         }
     }
     
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?)
     {
-        billURL.append(currentURL)
     }
     
     func parser(_ parser: XMLParser, parseErrorOccurred parseError: Error)
     {
         print(parseError.localizedDescription)
     }
-}
-
-class BillModel
-{
-    var title: String = ""
-    var fullName: String = ""
 }
