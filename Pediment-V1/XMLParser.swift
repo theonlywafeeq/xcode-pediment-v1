@@ -27,11 +27,13 @@ class BillXMLParser: NSObject, XMLParserDelegate
     private var SETcurrenttitle: Bool = false
     private var SETcurrentfullName: Bool = false
     
-    private var tagSwitch: Bool = false
+    private var parserCompletionHandler: (([BillModel]) -> Void)?
     
-    func parseFeed(url: String)
+    func parseFeed(url: String, completionHandler: (([BillModel]) -> Void)?)
     {
         currenturl = url
+        
+        self.parserCompletionHandler = completionHandler
         
         let request = URLRequest(url: URL(string: url)!)
         let urlSession = URLSession.shared
@@ -59,12 +61,14 @@ class BillXMLParser: NSObject, XMLParserDelegate
     
     func parser(_ parser: XMLParser, foundCharacters string: String)
     {
-        if currentElement == "title" && SETcurrenttitle {
-            currenttitle += string
+        if currentElement == "title" && SETcurrenttitle == false{
+            currenttitle = string
+            SETcurrenttitle = true
         }
         
-        if currentElement == "fullName" && SETcurrentfullName {
-            currentfullName += string
+        if currentElement == "fullName" && SETcurrentfullName == false{
+            currentfullName = string
+            SETcurrentfullName = true
         }
     }
     
@@ -75,7 +79,20 @@ class BillXMLParser: NSObject, XMLParserDelegate
         newBillItems.billtitle = currenttitle
         newBillItems.billfullName = currentfullName
         
-        billItems.append(newBillItems)
+        print("URL")
+        print(newBillItems.billURL)
+        print("TITLE")
+        print(newBillItems.billtitle)
+        print("FULLNAME")
+        print(newBillItems.billfullName)
+        
+        print("DONE PARSING")
+
+        self.billItems.append(newBillItems)
+    }
+    
+    func parserDidEndDocument(_ parser: XMLParser) {
+        parserCompletionHandler?(billItems)
     }
     
     func parser(_ parser: XMLParser, parseErrorOccurred parseError: Error)
@@ -92,6 +109,8 @@ class HR115XMLParser: NSObject, XMLParserDelegate
     private var currentElement = ""
     
     private var currentURL: String = ""
+    
+    private var tagSwitch: Bool = false
     
     func parseFeed(url: String)
     {
@@ -123,12 +142,11 @@ class HR115XMLParser: NSObject, XMLParserDelegate
     {
         if (currentElement == "loc" && tagSwitch == false) {
             currentURL = string
-            print(billItems.count)
             billItems.append(currentURL)
-            print(billItems)
+            tagSwitch = true
         }
         else {
-            tagSwitch = true
+            tagSwitch = false
         }
     }
     

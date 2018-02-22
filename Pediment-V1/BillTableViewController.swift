@@ -15,6 +15,8 @@ class BillTableViewController: UIViewController, UITableViewDataSource, UITableV
     let hr115XMLParser = HR115XMLParser()
     let billXMLParser = BillXMLParser()
     
+    private var billItems: [BillModel]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchData()
@@ -26,18 +28,26 @@ class BillTableViewController: UIViewController, UITableViewDataSource, UITableV
         
         print("it is taking a while")
         
-        sleep(15)
+        sleep(10)
         
         print("-------------------")
         
-        for i in 0..<hr115XMLParser.billItems.count {
-            print("NEW ITEM")
-            sleep(1)
-            print(hr115XMLParser.billItems[i])
-            sleep(1)
+        billXMLParser.parseFeed(url: hr115XMLParser.billItems[0]) {
+            (billItems) in
+            self.billItems = billItems
         }
+
         
-        print(billXMLParser.billItems.count)
+        /*for index in 0..<5 {
+            print("NEW ITEM")
+            //sleep(3)
+            print(hr115XMLParser.billItems[index])
+            billXMLParser.parseFeed(url: hr115XMLParser.billItems[index])
+            print("END ITEM")
+            //sleep(3)
+        }*/
+        
+        //print(billXMLParser.billItems.count)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
