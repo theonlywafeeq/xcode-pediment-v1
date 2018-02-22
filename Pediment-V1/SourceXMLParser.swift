@@ -27,13 +27,13 @@ class BillXMLParser: NSObject, XMLParserDelegate
     private var SETcurrenttitle: Bool = false
     private var SETcurrentfullName: Bool = false
     
-    private var parserCompletionHandler: (([BillModel]) -> Void)?
+    //private var parserCompletionHandler: (([BillModel]) -> Void)?
     
-    func parseFeed(url: String, completionHandler: (([BillModel]) -> Void)?)
+    func parseFeed(url: String/*, completionHandler: (([BillModel]) -> Void)?*/)
     {
         currenturl = url
         
-        self.parserCompletionHandler = completionHandler
+        //self.parserCompletionHandler = completionHandler
         
         let request = URLRequest(url: URL(string: url)!)
         let urlSession = URLSession.shared
@@ -61,12 +61,16 @@ class BillXMLParser: NSObject, XMLParserDelegate
     
     func parser(_ parser: XMLParser, foundCharacters string: String)
     {
-        if currentElement == "title" && SETcurrenttitle == false{
+        //print()
+        //print("LINE NUMBER \(parser.lineNumber) || STRING VALUE \(string)")
+        //print()
+        
+        if currentElement == "title" && SETcurrenttitle == false {
             currenttitle = string
             SETcurrenttitle = true
         }
         
-        if currentElement == "fullName" && SETcurrentfullName == false{
+        if currentElement == "fullName" && SETcurrentfullName == false {
             currentfullName = string
             SETcurrentfullName = true
         }
@@ -74,10 +78,21 @@ class BillXMLParser: NSObject, XMLParserDelegate
     
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?)
     {
+
+    }
+    
+    func parserDidEndDocument(_ parser: XMLParser) {
+        //parserCompletionHandler?(billItems)
+        
         let newBillItems = BillModel()
         newBillItems.billURL = currenturl
         newBillItems.billtitle = currenttitle
         newBillItems.billfullName = currentfullName
+        
+        /*
+        print()
+        print("APPENDING DATA")
+        print()
         
         print("URL")
         print(newBillItems.billURL)
@@ -87,12 +102,10 @@ class BillXMLParser: NSObject, XMLParserDelegate
         print(newBillItems.billfullName)
         
         print("DONE PARSING")
-
+         */
+        
         self.billItems.append(newBillItems)
-    }
-    
-    func parserDidEndDocument(_ parser: XMLParser) {
-        parserCompletionHandler?(billItems)
+        
     }
     
     func parser(_ parser: XMLParser, parseErrorOccurred parseError: Error)

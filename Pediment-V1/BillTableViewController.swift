@@ -26,26 +26,43 @@ class BillTableViewController: UIViewController, UITableViewDataSource, UITableV
     {
         hr115XMLParser.parseFeed(url: "https://www.gpo.gov/smap/bulkdata/BILLSTATUS/115hr/sitemap.xml")
         
-        print("it is taking a while")
-        
-        sleep(10)
-        
+        print()
         print("-------------------")
+        print()
         
-        billXMLParser.parseFeed(url: hr115XMLParser.billItems[0]) {
-            (billItems) in
-            self.billItems = billItems
+        print("It is taking a while")
+        
+        print()
+        print("-------------------")
+        print()
+        
+        for index in 0..<10 {
+            sleep(1)
+            print("Count ", index + 1)
         }
-
         
-        /*for index in 0..<5 {
+        print()
+        print("-------------------")
+        print()
+        
+        for index in 0..<5 {
+            print()
             print("NEW ITEM")
-            //sleep(3)
-            print(hr115XMLParser.billItems[index])
+            print()
+
             billXMLParser.parseFeed(url: hr115XMLParser.billItems[index])
+            
+            for index in 0..<3 {
+                sleep(1)
+                print("Count ", index + 1)
+            }
+            
+            print(billXMLParser.billItems[index].billfullName)
+            
+            print()
             print("END ITEM")
-            //sleep(3)
-        }*/
+            print()
+        }
         
         //print(billXMLParser.billItems.count)
     }
