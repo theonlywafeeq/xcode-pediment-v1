@@ -47,7 +47,7 @@ class BillTableViewController: UIViewController, UITableViewDataSource, UITableV
         
         for index in 0..<5 {
             print()
-            print("NEW ITEM")
+            print("NEW ITEM \(index)")
             print()
 
             billXMLParser.parseFeed(url: hr115XMLParser.billItems[index])
@@ -57,7 +57,9 @@ class BillTableViewController: UIViewController, UITableViewDataSource, UITableV
                 print("Count ", index + 1)
             }
             
-            print(billXMLParser.billItems[index].billfullName)
+            print(billXMLParser.billItemsArray[index].billtitle)
+            print(billXMLParser.billItemsArray[index].billfullName)
+            print(billXMLParser.billItemsArray[index].billURL)
             
             print()
             print("END ITEM")
@@ -76,15 +78,17 @@ class BillTableViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return hr115XMLParser.billItems.count
+        return billXMLParser.billItemsArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! BillTableViewCell
         
-        //cell.titleLabel.text = billXMLParser.billItems[indexPath.row].billtitle
-        //cell.sponsorLabel.text = billXMLParser.billItems[indexPath.row].billfullName
+        print(indexPath.row)
+        
+        cell.titleLabel.text = billXMLParser.billItemsArray[indexPath.row].billtitle
+        cell.sponsorLabel.text = billXMLParser.billItemsArray[indexPath.row].billfullName
         
         return cell
     }
