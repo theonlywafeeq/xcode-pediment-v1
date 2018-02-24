@@ -15,6 +15,8 @@ class BillTableViewController: UIViewController, UITableViewDataSource, UITableV
     let hr115XMLParser = HR115XMLParser()
     let billXMLParser = BillXMLParser()
     
+    var viewBillItems: [BillModel] = []
+    
     private var billItems: [BillModel]?
     
     override func viewDidLoad() {
@@ -45,21 +47,32 @@ class BillTableViewController: UIViewController, UITableViewDataSource, UITableV
         print("-------------------")
         print()
         
-        for index in 0..<5 {
+        for index in 0..<100 {
             print()
             print("NEW ITEM \(index)")
             print()
 
             billXMLParser.parseFeed(url: hr115XMLParser.billItems[index])
             
+            sleep(1)
+            
+            /*
             for index in 0..<3 {
                 sleep(1)
                 print("Count ", index + 1)
-            }
+            }*/
             
             print(billXMLParser.billItemsArray[index].billtitle)
             print(billXMLParser.billItemsArray[index].billfullName)
             print(billXMLParser.billItemsArray[index].billURL)
+            
+            var newViewBillItem = BillModel()
+            
+            newViewBillItem.billtitle = billXMLParser.billItemsArray[index].billtitle
+            newViewBillItem.billfullName = billXMLParser.billItemsArray[index].billfullName
+            newViewBillItem.billURL = billXMLParser.billItemsArray[index].billURL
+            
+            viewBillItems.append(newViewBillItem)
             
             print()
             print("END ITEM")
@@ -70,7 +83,7 @@ class BillTableViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 135
+        return 100
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -86,9 +99,13 @@ class BillTableViewController: UIViewController, UITableViewDataSource, UITableV
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! BillTableViewCell
         
         print(indexPath.row)
+        print(viewBillItems[indexPath.row].billtitle)
+        print(viewBillItems[indexPath.row].billfullName)
+        print(viewBillItems[indexPath.row].billURL)
         
-        cell.titleLabel.text = billXMLParser.billItemsArray[indexPath.row].billtitle
-        cell.sponsorLabel.text = billXMLParser.billItemsArray[indexPath.row].billfullName
+        
+        cell.titleLabel.text = viewBillItems[indexPath.row].billtitle
+        cell.sponsorLabel.text = viewBillItems[indexPath.row].billfullName
         
         return cell
     }
