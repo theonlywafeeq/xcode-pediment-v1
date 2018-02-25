@@ -47,7 +47,7 @@ class BillTableViewController: UIViewController, UITableViewDataSource, UITableV
         print("-------------------")
         print()
         
-        for index in 0..<100 {
+        for index in 0..<20 {
             print()
             print("NEW ITEM \(index)")
             print()
@@ -55,12 +55,6 @@ class BillTableViewController: UIViewController, UITableViewDataSource, UITableV
             billXMLParser.parseFeed(url: hr115XMLParser.billItems[index])
             
             sleep(1)
-            
-            /*
-            for index in 0..<3 {
-                sleep(1)
-                print("Count ", index + 1)
-            }*/
             
             print(billXMLParser.billItemsArray[index].billtitle)
             print(billXMLParser.billItemsArray[index].billfullName)
