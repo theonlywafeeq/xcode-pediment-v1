@@ -47,14 +47,14 @@ class BillTableViewController: UIViewController, UITableViewDataSource, UITableV
         print("-------------------")
         print()
         
-        for index in 0..<20 {
+        for index in 0..<10 {
             print()
             print("NEW ITEM \(index)")
             print()
-
+            
             billXMLParser.parseFeed(url: hr115XMLParser.billItems[index])
             
-            sleep(1)
+            sleep(2)
             
             print(billXMLParser.billItemsArray[index].billtitle)
             print(billXMLParser.billItemsArray[index].billfullName)
