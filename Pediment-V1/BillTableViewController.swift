@@ -8,6 +8,8 @@
 
 import UIKit
 
+@available(iOS 11.0, *)
+
 class BillTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate
 {
     @IBOutlet var tableView: UITableView!
@@ -102,5 +104,25 @@ class BillTableViewController: UIViewController, UITableViewDataSource, UITableV
         cell.sponsorLabel.text = viewBillItems[indexPath.row].billfullName
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let aye = UIContextualAction(style: .normal, title: "Aye") {
+            (action, view, nil) in
+            print("Aye")
+        }
+        
+        aye.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
+        
+        return UISwipeActionsConfiguration(actions: [aye])
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let nay = UIContextualAction(style: .normal, title: "Nay") { (action, view, nil) in print("Nay")
+        }
+        
+        nay.backgroundColor = #colorLiteral(red: 1, green: 0.1246822918, blue: 0.2303643567, alpha: 1)
+        
+        return UISwipeActionsConfiguration(actions: [nay])
     }
 }
