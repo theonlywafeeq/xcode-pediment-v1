@@ -14,11 +14,11 @@ struct BillModel {
 
 struct BillModelParsesBill {
     
-    private var link: String?
-    private var title: String?
-    private var sponsor: String?
+    var link: String?
+    var title: String?
+    var sponsor: String?
     
-    private var xmlParser: BillModelXMLParser?
+    private var xmlParser: BillModelXMLParser = BillModelXMLParser()
     private var parser: XMLParser?
     
     init(_ url: String) {
@@ -27,11 +27,12 @@ struct BillModelParsesBill {
     
     mutating func parseBill() {
         print("does it even get here")
-        xmlParser?.parseFeed(url: link!)
-        sponsor = xmlParser?.fullName
-        title = xmlParser?.title
+        xmlParser.parseFeed(url: link!)
+        sleep(1)
+        sponsor = xmlParser.fullName
+        title = xmlParser.title
         print("-------------------")
-        print("\(String(describing: title)) is by \(String(describing: sponsor))")
+        print("\(title ?? "nil") is by \(sponsor ?? "nil")")
         print("-------------------")
         
         print("so it did get all the way here after all!")
@@ -84,47 +85,32 @@ class BillModelXMLParser: NSObject, XMLParserDelegate
     {
         if elementName == "bill" {
             FOUNDbill = true
+            print(elementName)
         }
         
         // find sponsor
-        if elementName == "sponsors" && FOUNDbill {
-            FOUNDsponsors = true
-        }
-        
-        if elementName == "item" && FOUNDbill && FOUNDsponsors {
-            FOUNDitem = true
-        }
-        
-        if elementName == "fullName" && FOUNDbill && FOUNDsponsors && FOUNDitem {
+        if elementName == "fullName" {
             FOUNDfullName = true
+            print(elementName)
         }
         
         // find title
-        if elementName == "titles" && FOUNDbill {
-            FOUNDtitles = true
-        }
-        
-        if elementName == "item" && FOUNDbill && FOUNDtitles {
-            FOUNDitem = true
-        }
-        
-        if elementName == "titleType" && FOUNDbill && FOUNDtitles && FOUNDitem {
-            FOUNDtitleType = true
-        }
-        
-        if elementName == "title" && FOUNDbill && FOUNDtitles && FOUNDitem && FOUNDtitleType {
+        if elementName == "title" {
             FOUNDtitle = true
+            print(elementName)
         }
     }
     
     func parser(_ parser: XMLParser, foundCharacters string: String)
     {
-        if currentElement == "fullName" && FOUNDfullName {
+        if FOUNDfullName {
             fullName = string
+            print(fullName)
         }
         
-        if currentElement == "title" && FOUNDtitle {
+        if FOUNDtitle {
             title = string
+            print(title)
         }
     }
     

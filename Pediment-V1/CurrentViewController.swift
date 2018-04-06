@@ -34,11 +34,13 @@ class CurrentViewController: UIViewController, UITableViewDataSource, UITableVie
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! BillTableViewCell
         
-        cell.titleLabel.numberOfLines = 1
+        cell.titleLabel.numberOfLines = 0
+        cell.titleLabel.contentMode = .scaleToFill
+        cell.titleLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
         cell.sponsorLabel.numberOfLines = 1
         
-        cell.titleLabel.text = "EXTENDED TITLE"
-        cell.sponsorLabel.text = "SPONSOR"
+        cell.titleLabel.text = billModel.HR115parsed.title
+        cell.sponsorLabel.text = billModel.HR115parsed.sponsor
 
         return cell
     }
