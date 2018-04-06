@@ -9,26 +9,39 @@
 import Foundation
 
 struct BillModel {
+    var HR115parsed = BillModelParsesBill("https://www.gpo.gov/fdsys/bulkdata/BILLSTATUS/115/hr/BILLSTATUS-115hr82.xml")
+}
+
+struct BillModelParsesBill {
     
-    private var link: String
-    private var title: String
-    private var sponsor: String
+    private var link: String?
+    private var title: String?
+    private var sponsor: String?
     
-    private var xmlParser: BillModelXMLParser
-    private var parser: XMLParser
+    private var xmlParser: BillModelXMLParser?
+    private var parser: XMLParser?
     
+    init(_ url: String) {
+        link = url
+    }
     
     mutating func parseBill() {
-        xmlParser.parseFeed("https://www.gpo.gov/fdsys/bulkdata/BILLSTATUS/115/hr/BILLSTATUS-115hr82.xml")
-        sponsor = xmlParser.fullName
-        title = xmlParser.title
+        print("does it even get here")
+        xmlParser?.parseFeed(url: link!)
+        sponsor = xmlParser?.fullName
+        title = xmlParser?.title
+        print("-------------------")
+        print("\(String(describing: title)) is by \(String(describing: sponsor))")
+        print("-------------------")
+        
+        print("so it did get all the way here after all!")
     }
 }
 
 class BillModelXMLParser: NSObject, XMLParserDelegate
 {
-    private var currentElement: String
-    private var currentURL: String
+    private var currentElement: String = ""
+    private var currentURL: String = ""
     
     // Use these booleans to search for fullName.
     private var FOUNDbill: Bool = false
@@ -42,8 +55,8 @@ class BillModelXMLParser: NSObject, XMLParserDelegate
     private var FOUNDtitle: Bool = false
     
     // values retrived from XML file
-    var fullName: String
-    var title: String
+    var fullName: String = ""
+    var title: String = ""
     
     func parseFeed(url: String)
     {
@@ -118,14 +131,12 @@ class BillModelXMLParser: NSObject, XMLParserDelegate
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?)
     {
         if FOUNDfullName {
-            FOUNDbill = false
             FOUNDsponsors = false
             FOUNDitem = false
             FOUNDfullName = false
         }
         
         if FOUNDtitle {
-            FOUNDbill = false
             FOUNDtitles = false
             FOUNDitem = false
             FOUNDtitleType = false
