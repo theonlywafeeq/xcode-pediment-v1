@@ -10,12 +10,35 @@ import UIKit
 
 class CurrentViewController: UIViewController, UITableViewDataSource, UITableViewDelegate
 {
-    private var billModel: BillModel = BillModel()
+    private var billModel: [BillModel] = []
+    private var billModelXMLParser: BillModelXMLParser = BillModelXMLParser()
+    private var numOfBills = 10
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        billModel.HR115parsed.parseBill()
+        billModelXMLParser.parseFeed(url: "https://www.gpo.gov/smap/bulkdata/BILLSTATUS/115hr/sitemap.xml")
+        sleep(2)
+        
+        for index in 0..<numOfBills {
+            
+            var newBillModel: BillModel = BillModel()
+            
+            newBillModel.link = billModelXMLParser.loc[index]
+            
+            billModelXMLParser.parseFeed(url: billModelXMLParser.loc[index])
+            sleep(1)
+            
+            newBillModel.title = billModelXMLParser.title
+            newBillModel.sponsor = billModelXMLParser.fullName
+            
+            billModel.append(newBillModel)
+            print("------------------------------")
+            print(index)
+            print(billModel[index])
+            print("------------------------------")
+            
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -27,22 +50,32 @@ class CurrentViewController: UIViewController, UITableViewDataSource, UITableVie
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return numOfBills
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! BillTableViewCell
         
-        cell.titleLabel.numberOfLines = 0
-        cell.titleLabel.contentMode = .scaleToFill
-        cell.titleLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
-        cell.sponsorLabel.numberOfLines = 1
+        cell.titleLabel.text = billModel[indexPath.row].title
+        cell.sponsorLabel.text = billModel[indexPath.row].sponsor
         
-        cell.titleLabel.text = billModel.HR115parsed.title
-        cell.sponsorLabel.text = billModel.HR115parsed.sponsor
-
+        cell.titleLabel.numberOfLines = 0
+        cell.titleLabel.lineBreakMode = .byWordWrapping
+    
+        print("CELL - \(indexPath.row)")
+        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("CELL - \(indexPath.row)")
+        print("clicked")
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        print("CELL - \(indexPath.row)")
+        print("unclicked")
     }
 
     @available(iOS 11.0,*)
