@@ -13,6 +13,7 @@ struct BillModel {
     var link: String?
     var title: String?
     var sponsor: String?
+    var text: String?
     
 }
 
@@ -25,11 +26,14 @@ class BillModelXMLParser: NSObject, XMLParserDelegate
     private var FOUNDfullName: Bool = false
     private var FOUNDtitle: Bool = false
     private var FOUNDloc: Bool = false
+    private var FOUNDtext: Bool = false
+    private var FOUNDSWITCHtext: Int = 0
     
     // values retrived from XML file
     var fullName: String = ""
     var title: String = ""
     var loc: [String] = []
+    var text: String = ""
     
     func parseFeed(url: String)
     {
@@ -69,6 +73,11 @@ class BillModelXMLParser: NSObject, XMLParserDelegate
         if elementName == "loc" {
             FOUNDloc = true
         }
+        
+        // find text summary
+        if elementName == "text" {
+            FOUNDtext = true
+        }
     }
     
     func parser(_ parser: XMLParser, foundCharacters string: String)
@@ -83,6 +92,12 @@ class BillModelXMLParser: NSObject, XMLParserDelegate
         
         if FOUNDloc {
             loc.append(string)
+        }
+        
+        print(FOUNDSWITCHtext)
+        if FOUNDtext && FOUNDSWITCHtext == 0{
+            text = string
+            FOUNDSWITCHtext = 1
         }
     }
     
@@ -99,6 +114,9 @@ class BillModelXMLParser: NSObject, XMLParserDelegate
         if FOUNDloc {
             FOUNDloc = false
         }
+//        if FOUNDtext {
+//            FOUNDtext = false
+//        }
     }
     
     func parserDidEndDocument(_ parser: XMLParser)

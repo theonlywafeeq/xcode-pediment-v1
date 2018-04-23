@@ -10,9 +10,11 @@ import UIKit
 
 class CurrentViewController: UIViewController, UITableViewDataSource, UITableViewDelegate
 {
-    private var billModel: [BillModel] = []
+    @IBOutlet weak var tableView: UITableView!
+    
+    var billModel: [BillModel] = []
     private var billModelXMLParser: BillModelXMLParser = BillModelXMLParser()
-    private var numOfBills = 10
+    private var numOfBills = 20
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,22 +29,26 @@ class CurrentViewController: UIViewController, UITableViewDataSource, UITableVie
             newBillModel.link = billModelXMLParser.loc[index]
             
             billModelXMLParser.parseFeed(url: billModelXMLParser.loc[index])
-            sleep(1)
+            sleep(UInt32(1))
             
             newBillModel.title = billModelXMLParser.title
             newBillModel.sponsor = billModelXMLParser.fullName
+            newBillModel.text = billModelXMLParser.text
             
             billModel.append(newBillModel)
-            print("------------------------------")
-            print(index)
-            print(billModel[index])
-            print("------------------------------")
+            //print("------------------------------")
+            //print(index)
+            //print(billModel[index])
+            //print("------------------------------")
+            
+            print("\(numOfBills - index) seconds remaining...")
+            
+            tableView.delegate = self
+            tableView.dataSource = self
+            
+            tableView.rowHeight = UITableViewAutomaticDimension
             
         }
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -70,7 +76,19 @@ class CurrentViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("CELL - \(indexPath.row)")
-        print("clicked")
+        print("CLICKED BILL \(indexPath.row)")
+        
+        performSegue(withIdentifier: "segue", sender: self)
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segue" {
+            let CellViewController = segue.destination as! CellViewController
+            CellViewController.billTitle = billModel[(tableView.indexPathForSelectedRow?.row)!].title
+            CellViewController.billSponsor = billModel[(tableView.indexPathForSelectedRow?.row)!].sponsor
+            CellViewController.billFullSummary = billModel[(tableView.indexPathForSelectedRow?.row)!].text
+        }
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
