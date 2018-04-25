@@ -22,12 +22,18 @@ class BillModelXMLParser: NSObject, XMLParserDelegate
     private var currentElement: String = ""
     private var currentURL: String = ""
     
-    private var FOUNDbill: Bool = false
     private var FOUNDfullName: Bool = false
     private var FOUNDtitle: Bool = false
     private var FOUNDloc: Bool = false
+    
+    //hierarchy to find text summary
+    private var FOUNDbillStatus: Bool = false
+    private var FOUNDbill: Bool = false
+    private var FOUNDsummaries: Bool = false
+    private var FOUNDbillSummaries: Bool = false
+    private var FOUNDitem: Bool = false
     private var FOUNDtext: Bool = false
-    private var FOUNDSWITCHtext: Int = 0
+    private var SWITCHsum: Int = 0
     
     // values retrived from XML file
     var fullName: String = ""
@@ -75,8 +81,30 @@ class BillModelXMLParser: NSObject, XMLParserDelegate
         }
         
         // find text summary
-        if elementName == "text" {
+        if elementName == "billStatus" {
+            FOUNDbillStatus = true
+        }
+        
+        if elementName == "bill" && FOUNDbillStatus {
+            FOUNDbill = true
+        }
+        
+        if elementName == "summaries" && FOUNDbillStatus && FOUNDbill {
+            FOUNDsummaries = true
+        }
+        
+        if elementName == "billSummaries" && FOUNDbillStatus && FOUNDbill && FOUNDsummaries {
+            FOUNDbillSummaries = true
+        }
+        
+        if elementName == "item" && FOUNDbillStatus && FOUNDbill && FOUNDsummaries && FOUNDbillSummaries {
+            FOUNDitem = true
+        }
+        
+        if elementName == "text" && FOUNDbillStatus && FOUNDbill && FOUNDsummaries && FOUNDbillSummaries && FOUNDitem {
             FOUNDtext = true
+            SWITCHsum += 1
+            
         }
     }
     
@@ -94,10 +122,10 @@ class BillModelXMLParser: NSObject, XMLParserDelegate
             loc.append(string)
         }
         
-        print(FOUNDSWITCHtext)
-        if FOUNDtext && FOUNDSWITCHtext == 0{
+        if FOUNDbillStatus && FOUNDbill && FOUNDsummaries && FOUNDbillSummaries && FOUNDitem && FOUNDtext && SWITCHsum == 1{
             text = string
-            FOUNDSWITCHtext = 1
+            print("trues")
+            SWITCHsum += 1
         }
     }
     
@@ -114,13 +142,15 @@ class BillModelXMLParser: NSObject, XMLParserDelegate
         if FOUNDloc {
             FOUNDloc = false
         }
-//        if FOUNDtext {
-//            FOUNDtext = false
-//        }
+        
+        if FOUNDtext {
+            FOUNDtext = false
+        }
     }
     
     func parserDidEndDocument(_ parser: XMLParser)
     {
+        SWITCHsum = 0
     }
     
     func parser(_ parser: XMLParser, parseErrorOccurred parseError: Error)

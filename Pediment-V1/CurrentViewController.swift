@@ -36,10 +36,6 @@ class CurrentViewController: UIViewController, UITableViewDataSource, UITableVie
             newBillModel.text = billModelXMLParser.text
             
             billModel.append(newBillModel)
-            //print("------------------------------")
-            //print(index)
-            //print(billModel[index])
-            //print("------------------------------")
             
             print("\(numOfBills - index) seconds remaining...")
             
@@ -48,6 +44,10 @@ class CurrentViewController: UIViewController, UITableViewDataSource, UITableVie
             
             tableView.rowHeight = UITableViewAutomaticDimension
             
+            print(billModel[index].link!)
+            print(billModel[index].title!)
+            print(billModel[index].sponsor!)
+            print(billModel[index].text!)
         }
     }
     
