@@ -13,7 +13,6 @@
 		607D629820227BAB00A68A47 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607D629620227BAB00A68A47 /* Main.storyboard */; };
 		607D629A20227BAB00A68A47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607D629920227BAB00A68A47 /* Assets.xcassets */; };
 		60F01E5720509AEC0007C552 /* BillModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F01E5620509AEC0007C552 /* BillModel.swift */; };
-		60F01E6620533B8C0007C552 /* Sample.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60F01E6520533B8C0007C552 /* Sample.storyboard */; };
 		60F01E68205716940007C552 /* BillTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F01E67205716940007C552 /* BillTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -26,7 +25,6 @@
 		607D629920227BAB00A68A47 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		607D629E20227BAB00A68A47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		60F01E5620509AEC0007C552 /* BillModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillModel.swift; sourceTree = "<group>"; };
-		60F01E6520533B8C0007C552 /* Sample.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Sample.storyboard; sourceTree = "<group>"; };
 		60F01E67205716940007C552 /* BillTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -44,7 +42,6 @@
 		607D628620227BAB00A68A47 = {
 			isa = PBXGroup;
 			children = (
-				60F01E6520533B8C0007C552 /* Sample.storyboard */,
 				607D629120227BAB00A68A47 /* Pediment-V1 */,
 				607D629020227BAB00A68A47 /* Products */,
 			);
@@ -133,7 +130,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				60F01E6620533B8C0007C552 /* Sample.storyboard in Resources */,
 				607D629A20227BAB00A68A47 /* Assets.xcassets in Resources */,
 				607D629820227BAB00A68A47 /* Main.storyboard in Resources */,
 			);

@@ -93,7 +93,6 @@
                                         <connections>
                                             <outlet property="sponsorLabel" destination="qtb-QA-XNt" id="FUq-3p-mLd"/>
                                             <outlet property="titleLabel" destination="xQg-QM-bgz" id="Xc9-N7-f31"/>
-                                            <segue destination="lbZ-KE-ikr" kind="show" identifier="segue" id="O2m-Qw-53Y"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -116,6 +115,7 @@
                     <navigationItem key="navigationItem" title="Current Legislation" id="7VY-PW-CdG"/>
                     <connections>
                         <outlet property="tableView" destination="rJv-Jf-HxQ" id="IAj-kM-x50"/>
+                        <segue destination="lbZ-KE-ikr" kind="show" identifier="segue" id="y49-Kl-Msk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t1t-U9-2OK" userLabel="First Responder" sceneMemberID="firstResponder"/>
