@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseDatabase
 
 class CurrentViewController: UIViewController, UITableViewDataSource, UITableViewDelegate
 {
@@ -15,6 +17,8 @@ class CurrentViewController: UIViewController, UITableViewDataSource, UITableVie
     var billModel: [BillModel] = []
     private var billModelXMLParser: BillModelXMLParser = BillModelXMLParser()
     private var numOfBills = 20
+    
+    let ref = Database.database().reference()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,6 +107,13 @@ class CurrentViewController: UIViewController, UITableViewDataSource, UITableVie
         }
         
         aye.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        
+//        let userItem = UserItem(name: billModel[(tableView.indexPathForSelectedRow?.row)!].title!,
+//                                vote: "aye")
+//
+//        let userItemRef = self.ref.child(billModel[(tableView.indexPathForSelectedRow?.row)!].title!.lowercased())
+//
+//        userItemRef.setValue(userItem.returnVote())
         
         return UISwipeActionsConfiguration(actions: [aye])
     }
